@@ -10,8 +10,7 @@ import com.demoqa.pages.components.StateAndCityComponent;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
 
@@ -46,6 +45,8 @@ public class RegistrationFormPage {
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT_REGISTRATION_FORM));
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
         return this;
     }
 
