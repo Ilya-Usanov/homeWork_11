@@ -43,6 +43,7 @@ public class DemoqaFormTest {
         Attach.screenshotAs("last sreenshot");
         Attach.pageSource();
         Attach.browseConsoleLogs();
+        Attach.addVideo();
     }
 
     @Test
