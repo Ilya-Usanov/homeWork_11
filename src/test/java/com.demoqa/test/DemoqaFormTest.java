@@ -3,9 +3,10 @@ package com.demoqa.test;
 import com.codeborne.selenide.Configuration;
 import com.demoqa.data.TestData;
 import com.demoqa.pages.RegistrationFormPage;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static io.qameta.allure.Allure.step;
 
 public class DemoqaFormTest {
 
@@ -21,16 +22,11 @@ public class DemoqaFormTest {
         Configuration.baseUrl = "https://demoqa.com";
     }
 
-    @AfterAll
-    static void tearDown() {
-        Configuration.holdBrowserOpen = true;
-    }
-
     @Test
     void formTest() {
-        registrationFormPage
+        step("Opening the registration form and filling in the fields", () -> registrationFormPage
                 .openPage()
-                .fillsElements(testData);
-        registrationFormPage.checkFillsForm(testData);
+                .fillsElements(testData));
+        step("Checking the registration form", () -> registrationFormPage.checkFillsForm(testData));
     }
 }
