@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.Map;
-
 import static io.qameta.allure.Allure.step;
 
 public class DemoqaFormTest {
@@ -28,10 +26,8 @@ public class DemoqaFormTest {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
@@ -40,7 +36,7 @@ public class DemoqaFormTest {
 
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs("last sreenshot");
+        Attach.screenshotAs("last screenshot");
         Attach.pageSource();
         Attach.browseConsoleLogs();
         Attach.addVideo();

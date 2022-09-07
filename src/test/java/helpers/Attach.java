@@ -24,12 +24,11 @@ public class Attach {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
-    @Attachment(value = "Page source", type = "text/plain")
+    @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
     }
 
-    @Attachment(value = "Page source", type = "text/plain")
     public static void browseConsoleLogs() {
         attachAsText(
                 "Broweser console logs",
@@ -53,7 +52,7 @@ public class Attach {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 }
